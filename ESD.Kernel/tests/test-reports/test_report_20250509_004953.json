@@ -1,0 +1,25 @@
+{
+  "timestamp": "Fri May  9 12:49:53 AM CEST 2025",
+  "tests": [
+  {
+    "name": "ESD.Kernel/ESD.Kernel-0.0.1/01-simple-boot/unit_tests",
+    "status": "passed",
+    "output": "======================================================\nRUNNING TEST: ESD.Kernel/ESD.Kernel-0.0.1/01-simple-boot/unit_tests\n======================================================\n\n==== TEST CASE: k_put_char places character correctly in video memory ====\nInitializing test environment...\n  ✓ PASS: PASS: Character should be placed at the correct offset\n  ✓ PASS: PASS: Attribute should be set at the correct offset\n\n==== TEST CASE: k_put_char bounds checking ====\nInitializing test environment...\n  ✓ PASS: PASS: Nothing should be written when column is out of bounds\n  ✗ FAIL: FAIL: Nothing should be written when row is out of bounds\n\n====== TEST SUMMARY ======\nTotal tests: 2\nPassed: 3\nFailed: 1\n\n✗✗✗ 1 of 2 TESTS FAILED! ✗✗✗\n------------------------------------------------------\nTEST COMPLETED WITH EXIT CODE: 0\n======================================================"
+  },
+  {
+    "name": "ESD.Kernel/ESD.Kernel-0.0.1/03-keyboard-input/unit_tests",
+    "status": "passed",
+    "output": "======================================================\nRUNNING TEST: ESD.Kernel/ESD.Kernel-0.0.1/03-keyboard-input/unit_tests\n======================================================\n==== TEST: scancode_to_char maps keyboard scancodes to correct characters ====\n  [PASS] PASS: Scancode 0x1E should map to 'a'\n  [PASS] PASS: Space key should map to space character\n  [PASS] PASS: Enter key should map to newline\n  [PASS] PASS: Backspace should map to special character\n  [PASS] PASS: Ctrl key should not map to a character\n==== TEST: poll_keyboard_once reads keyboard input correctly ====\n  [PASS] PASS: Should read 'a' character from keyboard\n  [PASS] PASS: Buffer index should be advanced\n==== TEST: poll_keyboard_once ignores key releases ====\n  [PASS] PASS: Should ignore key release (high bit set)\n==== TEST: poll_keyboard_once handles multiple key presses ====\n  [PASS] PASS: First keypress should be 'a'\n  [FAIL] FAIL: Second keypress should be 'b'\n\n==== TEST SUMMARY ====\nTotal tests: 4\nPassed: 9\nFailed: 1\n\nTESTS FAILED: 1 of 4\n------------------------------------------------------\nTEST COMPLETED WITH EXIT CODE: 0\n======================================================"
+  },
+  {
+    "name": "ESD.Kernel/ESD.Kernel-0.0.1/02-improved-console/unit_tests",
+    "status": "passed",
+    "output": "======================================================\nRUNNING TEST: ESD.Kernel/ESD.Kernel-0.0.1/02-improved-console/unit_tests\n======================================================\n==== TEST: k_put_char places character with current attribute ====\n  [PASS] PASS: Character should be placed at the current cursor position\n  [PASS] PASS: Current attribute should be used\n  [PASS] PASS: Cursor should be advanced after placing character\n==== TEST: k_put_char handles newline correctly ====\n  [PASS] PASS: Newline should move cursor to start of next line\n==== TEST: Cursor wraps when reaching edge of screen ====\n  [PASS] PASS: Cursor should wrap to next line after reaching end of line\n==== TEST: k_update_cursor sends correct values to ports ====\n  [PASS] PASS: High byte port command should be written\n  [PASS] PASS: High byte of position should be written\n  [PASS] PASS: Low byte port command should be written\n==== TEST: k_print_string prints entire string ====\n  [PASS] PASS: First character should be printed\n  [PASS] PASS: Second character should be printed\n  [PASS] PASS: Third character should be printed\n  [PASS] PASS: Cursor should be advanced by string length\n\n==== TEST SUMMARY ====\nTotal tests: 5\nPassed: 12\nFailed: 0\n\nALL TESTS PASSED!\n------------------------------------------------------\nTEST COMPLETED WITH EXIT CODE: 0\n======================================================"
+  }
+  ],
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0
+  }
+}

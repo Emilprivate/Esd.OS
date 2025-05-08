@@ -9,12 +9,10 @@ unsigned char current_attr = DEFAULT_ATTR;
 int cursor_x = 0;
 int cursor_y = 0;
 
-// Helper function for I/O port output
 static inline void outb(unsigned short port, unsigned char val) {
     asm volatile ( "outb %0, %1" : : "a"(val), "Nd"(port) );
 }
 
-// Function to update the hardware cursor
 void k_update_cursor(int x, int y) {
     unsigned short pos = y * VGA_WIDTH + x;
     outb(0x3D4, 0x0F); // Select cursor location low register
@@ -23,7 +21,6 @@ void k_update_cursor(int x, int y) {
     outb(0x3D5, (unsigned char)((pos >> 8) & 0xFF));
 }
 
-// Function to scroll the screen up by one line
 void k_scroll() {
     for (int y = 1; y < VGA_HEIGHT; y++) {
         for (int x = 0; x < VGA_WIDTH; x++) {
@@ -34,17 +31,15 @@ void k_scroll() {
         }
     }
 
-    // Clear the last line
     int offset_last_line = ((VGA_HEIGHT - 1) * VGA_WIDTH) * 2;
     for (int x = 0; x < VGA_WIDTH; x++) {
-        vidmem[offset_last_line + x * 2] = ' '; // Space character
+        vidmem[offset_last_line + x * 2] = ' ';
         vidmem[offset_last_line + x * 2 + 1] = current_attr;
     }
     cursor_y = VGA_HEIGHT - 1; 
     k_update_cursor(cursor_x, cursor_y);
 }
 
-// Function to clear the screen
 void k_clear_screen() {
     for (int y = 0; y < VGA_HEIGHT; y++) {
         for (int x = 0; x < VGA_WIDTH; x++) {
@@ -58,32 +53,28 @@ void k_clear_screen() {
     k_update_cursor(cursor_x, cursor_y);
 }
 
-// Function to write a single character to the screen at current cursor position
 void k_put_char(char c) {
-    if (c == '\n') { // Handle newline
+    if (c == '\n') {
         cursor_x = 0;
         cursor_y++;
-    } else if (c >= ' ') { // Printable character
+    } else if (c >= ' ') {
         int offset = (cursor_y * VGA_WIDTH + cursor_x) * 2;
         vidmem[offset] = c;
         vidmem[offset + 1] = current_attr;
         cursor_x++;
     }
 
-    // If cursor goes past screen width, wrap to next line
     if (cursor_x >= VGA_WIDTH) {
         cursor_x = 0;
         cursor_y++;
     }
 
-    // If cursor goes past screen height, scroll
     if (cursor_y >= VGA_HEIGHT) {
         k_scroll();
     }
     k_update_cursor(cursor_x, cursor_y);
 }
 
-// Function to print a null-terminated string
 void k_print_string(const char *str) {
     int i = 0;
     while (str[i] != '\0') {
@@ -92,14 +83,12 @@ void k_print_string(const char *str) {
     }
 }
 
-// Function to set text attribute (color)
 void k_set_text_attr(unsigned char attr) {
     current_attr = attr;
 }
 
-// Kernel main function
 void k_main() {
-    k_clear_screen(); // This will now also set the hardware cursor
+    k_clear_screen(); 
 
     k_print_string("ESD.OS Kernel - Console v2.0 (Hardware Cursor & Colors)!\n");
     k_print_string("Default color (White on Black)\n");
@@ -118,7 +107,7 @@ void k_main() {
 
     for (int i = 0; i < 20; i++) {
         k_print_string("Line ");
-        // Simple int to string for demo, not robust
+
         char num_str[3];
         if (i + 1 < 10) {
             num_str[0] = (i + 1) + '0';
@@ -136,7 +125,7 @@ void k_main() {
 
     k_set_text_attr(0x0B); // Light Cyan
     k_print_string("Testing cursor position after many lines...\n");
-    k_print_string("Cursor should be here ->"); // Cursor will be after the '>'
+    k_print_string("Cursor should be here ->");
 
     for (;;) {
         asm volatile ("hlt");

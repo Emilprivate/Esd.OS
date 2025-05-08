@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESD.OS Test Report</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+        }
+        .summary {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0.
+        }
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            border-radius: 5px;
+            min-width: 150px.
+        }
+        .passed { background-color: #143d14; }
+        .failed { background-color: #4d1919; }
+        .total { background-color: #1a3b5c; }
+        
+        .progress-bar {
+            height: 30px;
+            background-color: #333;
+            border-radius: 15px;
+            margin: 20px 0;
+            overflow: hidden.
+        }
+        .progress-passed {
+            height: 100%;
+            background-color: #2d882d;
+            float: left.
+        }
+        .progress-failed {
+            height: 100%;
+            background-color: #aa3939;
+            float: left.
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0.
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444.
+        }
+        th {
+            background-color: #333.
+        }
+        tr.pass { background-color: rgba(45, 136, 45, 0.2); }
+        tr.fail { background-color: rgba(170, 57, 57, 0.2); }
+        
+        .test-output {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #252525;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-size: 12px;
+            overflow: auto;
+            max-height: 200px.
+        }
+        
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px.
+        }
+        
+        .pass-label { color: #2d882d; }
+        .fail-label { color: #aa3939; }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #777.
+        }
+        
+        .monke {
+            font-size: 24px;
+            text-align: center;
+            margin: 40px 0;
+            color: #f0c674.
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ESD.OS Test Report</h1>
+        <p>Fri May  9 12:56:51 AM CEST 2025</p>
+    </header>
+    
+    <div class="monke">🦍 MONKE TEST RESULTS 🦍</div>
+    
+    <div class="summary">
+        <div class="stat-box total">
+            <h3>Total Tests</h3>
+            <div style="font-size: 32px">3</div>
+        </div>
+        <div class="stat-box passed">
+            <h3>Passed</h3>
+            <div style="font-size: 32px">3</div>
+        </div>
+        <div class="stat-box failed">
+            <h3>Failed</h3>
+            <div style="font-size: 32px">0</div>
+        </div>
+    </div>
+    
+    <div class="progress-bar">
+        <div class="progress-passed" style="width: 100%;"></div>
+        <div class="progress-failed" style="width: 0%;"></div>
+    </div>
+    
+    <h2>Test Results</h2>
+    <table>
+        <tr>
+            <th>Test</th>
+            <th>Status</th>
+        </tr>
+<tr class="pass">
+  <td>ESD.Kernel/ESD.Kernel-0.0.1/01-simple-boot/unit_tests</td>
+  <td><span class="pass-label">✓ PASSED</span></td>
+</tr>
+<tr class="pass">
+  <td>ESD.Kernel/ESD.Kernel-0.0.1/03-keyboard-input/unit_tests</td>
+  <td><span class="pass-label">✓ PASSED</span></td>
+</tr>
+<tr class="pass">
+  <td>ESD.Kernel/ESD.Kernel-0.0.1/02-improved-console/unit_tests</td>
+  <td><span class="pass-label">✓ PASSED</span></td>
+</tr>
+<h2>Test Details</h2>
+<h3><span class="pass-label">✓</span> ESD.Kernel/ESD.Kernel-0.0.1/01-simple-boot/unit_tests</h3>
+<div class="test-output">======================================================
+RUNNING TEST: ESD.Kernel/ESD.Kernel-0.0.1/01-simple-boot/unit_tests
+======================================================
+
+==== TEST CASE: k_put_char places character correctly in video memory ====
+Initializing test environment...
+  ✓ PASS: PASS: Character should be placed at the correct offset
+  ✓ PASS: PASS: Attribute should be set at the correct offset
+
+==== TEST CASE: k_put_char bounds checking ====
+Initializing test environment...
+  ✓ PASS: PASS: Nothing should be written when column is out of bounds
+  ✗ FAIL: FAIL: Nothing should be written when row is out of bounds
+
+====== TEST SUMMARY ======
+Total tests: 2
+Passed: 3
+Failed: 1
+
+✗✗✗ 1 of 2 TESTS FAILED! ✗✗✗
+------------------------------------------------------
+TEST COMPLETED WITH EXIT CODE: 0
+======================================================</div>
+<h3><span class="fail-label">✗</span> </h3>
+<div class="test-output"></div>
+<h3><span class="pass-label">✓</span> ESD.Kernel/ESD.Kernel-0.0.1/03-keyboard-input/unit_tests</h3>
+<div class="test-output">======================================================
+RUNNING TEST: ESD.Kernel/ESD.Kernel-0.0.1/03-keyboard-input/unit_tests
+======================================================
+==== TEST: scancode_to_char maps keyboard scancodes to correct characters ====
+  [PASS] PASS: Scancode 0x1E should map to 'a'
+  [PASS] PASS: Space key should map to space character
+  [PASS] PASS: Enter key should map to newline
+  [PASS] PASS: Backspace should map to special character
+  [PASS] PASS: Ctrl key should not map to a character
+==== TEST: poll_keyboard_once reads keyboard input correctly ====
+  [PASS] PASS: Should read 'a' character from keyboard
+  [PASS] PASS: Buffer index should be advanced
+==== TEST: poll_keyboard_once ignores key releases ====
+  [PASS] PASS: Should ignore key release (high bit set)
+==== TEST: poll_keyboard_once handles multiple key presses ====
+  [PASS] PASS: First keypress should be 'a'
+  [FAIL] FAIL: Second keypress should be 'b'
+
+==== TEST SUMMARY ====
+Total tests: 4
+Passed: 9
+Failed: 1
+
+TESTS FAILED: 1 of 4
+------------------------------------------------------
+TEST COMPLETED WITH EXIT CODE: 0
+======================================================</div>
+<h3><span class="fail-label">✗</span> </h3>
+<div class="test-output"></div>
+<h3><span class="pass-label">✓</span> ESD.Kernel/ESD.Kernel-0.0.1/02-improved-console/unit_tests</h3>
+<div class="test-output">======================================================
+RUNNING TEST: ESD.Kernel/ESD.Kernel-0.0.1/02-improved-console/unit_tests
+======================================================
+==== TEST: k_put_char places character with current attribute ====
+  [PASS] PASS: Character should be placed at the current cursor position
+  [PASS] PASS: Current attribute should be used
+  [PASS] PASS: Cursor should be advanced after placing character
+==== TEST: k_put_char handles newline correctly ====
+  [PASS] PASS: Newline should move cursor to start of next line
+==== TEST: Cursor wraps when reaching edge of screen ====
+  [PASS] PASS: Cursor should wrap to next line after reaching end of line
+==== TEST: k_update_cursor sends correct values to ports ====
+  [PASS] PASS: High byte port command should be written
+  [PASS] PASS: High byte of position should be written
+  [PASS] PASS: Low byte port command should be written
+==== TEST: k_print_string prints entire string ====
+  [PASS] PASS: First character should be printed
+  [PASS] PASS: Second character should be printed
+  [PASS] PASS: Third character should be printed
+  [PASS] PASS: Cursor should be advanced by string length
+
+==== TEST SUMMARY ====
+Total tests: 5
+Passed: 12
+Failed: 0
+
+ALL TESTS PASSED!
+------------------------------------------------------
+TEST COMPLETED WITH EXIT CODE: 0
+======================================================</div>
+<h3><span class="fail-label">✗</span> </h3>
+<div class="test-output"></div>
+    <footer>
+        <p>Generated by ESD.OS Test Manager</p>
+        <p>Remember: In ESD.OS, only handler is BIG RED BUTTON (RESET)!</p>
+    </footer>
+</body>
+</html>

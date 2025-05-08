@@ -52,15 +52,19 @@ If you prefer to build manually, follow these steps:
 3. Link the kernel: `ld -m elf_i386 -T config/linker.ld -o build/kernel.bin build/simple_kernel.o`
 4. Create the ISO: `grub-mkrescue -o dist/esd-os.iso build/iso`
 
-## Testing
+## Building and Running
 
-After the ISO (`dist/esd-os.iso`) is created using `./build.sh`, you can test the kernel using QEMU.
+The Makefile provides several targets:
+- `make build`: Compile and create the ISO
+- `make run`: Run the built ISO in QEMU
+- `make clean`: Remove build artifacts
+- `make all`: Clean, build, and run in sequence
 
-You can either run the QEMU command directly:
+Example:
 ```bash
-qemu-system-i386 -cdrom dist/esd-os.iso
+make all
 ```
 
-Or use the provided `run.sh` script:
-1. Make it executable: `chmod +x run.sh`
-2. Run the script: `./run.sh`
+## Notes
+
+This kernel uses a polling-based keyboard driver instead of interrupts for simplicity. The implementation focuses on basic keyboard input without complex key mapping or modifier handling.
