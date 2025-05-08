@@ -14,19 +14,14 @@ Remember: in ESD.OS, only handler is BIG RED BUTTON (RESET). Enjoy PAIN, monke s
 
 Development proceeds in small, focused prototypes, each adding a fundamental feature needed for a fully functional kernel. Each prototype is self-contained and demonstrates a single step in the evolution of the OS:
 
-### ESD.Kernel-0.0.1:
-- **01-simple-boot:** Minimal bootloader and kernel entry.
-- **02-improved-console:** Basic console output improvements.
-- **03-keyboard-input:** Implement a basic PS/2 keyboard driver to read scancodes and display them. This will not involve complex key mapping, just raw input to screen.
-
-Future prototypes will continue to add essential features, one at a time, always without error handlers or safety nets.
-
 ## Expanded Roadmap
 
 ### ESD.Kernel-0.0.1: Basic Boot & IO
 - **01-simple-boot:** Minimal bootloader and kernel entry.
 - **02-improved-console:** Basic console output improvements.
 - **03-keyboard-input:** Basic PS/2 keyboard driver without complex mapping.
+
+![demo](Resources/03-demo.png)
 
 ### ESD.Kernel-0.0.2: Core Kernel Features
 - **04-memory-management:** Physical and virtual memory management. No memory protection!
